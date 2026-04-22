@@ -1,0 +1,39 @@
+# Dependencies / build output
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Python / FastAPI
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+env/
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# Temp files
+.tmp/
+*.log
+
+# Database / local artifacts
+*.sqlite3
+*.db
+backend/mybackup.sql
+
+# OS files
+.DS_Store
+Thumbs.db

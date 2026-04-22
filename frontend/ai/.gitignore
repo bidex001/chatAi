@@ -1,0 +1,26 @@
+# -------------------
+# Python / FastAPI
+# -------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# virtual environments
+venv/
+env/
+.venv/
+
+# dotenv
+.env
+
+# temp files
+.tmp/
+backend/.tmp/
+
+# database / local files
+*.sqlite3
+*.db
+
+# logs
+*.log
