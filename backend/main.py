@@ -37,6 +37,12 @@ ALLOWED_ORIGINS = [
 # ---------------------------------------------------------------------------
 # CORS — allows your frontend (React/HTML) to talk to this API
 # ---------------------------------------------------------------------------
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://your-frontend-domain.com"
+]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
