@@ -2,7 +2,7 @@ import { suggestionCards } from "./mainData";
 
 const MainSuggestionCards = ({ isSending, onSelectPrompt }) => {
   return (
-    <div className="grid w-full gap-4 md:grid-cols-2 xl:grid-cols-3">
+    <div className="grid w-full gap-4 md:grid-cols-2 xl:grid-cols-3 max-sm:hidden">
       {suggestionCards.map((card) => {
         const Icon = card.icon;
 

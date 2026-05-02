@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import api from "../lib/api";
+import api, { persistAuthToken } from "../lib/api";
 
 const initialForm = {
   username: "",
@@ -45,10 +45,18 @@ const Login = ({ onAuthSuccess }) => {
           };
 
       const res = await api.post(endpoint, payload);
+      const token = res.data?.token?.trim();
+
+      if (!token) {
+        throw new Error("Authentication token missing from the server response.");
+      }
+
+      persistAuthToken(token);
       onAuthSuccess?.(res.data.user);
     } catch (requestError) {
       setError(
         requestError?.response?.data?.detail ||
+          requestError?.message ||
           "Authentication failed. Check your details and try again."
       );
     } finally {
@@ -74,8 +82,8 @@ const Login = ({ onAuthSuccess }) => {
         </div>
 
         <p className="mt-4 text-sm leading-6 text-slate-600">
-          Use the browser form below so the API can set the auth cookie that
-          protects your routes.
+          Use the browser form below so the API can create your session and
+          protect your routes.
         </p>
 
         <div className="mt-6 grid grid-cols-2 rounded-2xl bg-slate-100 p-1 text-sm font-medium text-slate-600">

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Login from "./component/login";
 import Main from "./component/main";
 import SideBar from "./component/sideBar";
-import api from "./lib/api";
+import api, { clearAuthToken } from "./lib/api";
 
 const Page = () => {
   const [authStatus, setAuthStatus] = useState("loading");
@@ -36,6 +36,7 @@ const Page = () => {
 
         setUser(null);
         if (error?.response?.status === 401) {
+          clearAuthToken();
           setAuthError("");
           setAuthStatus("unauthenticated");
           return;
@@ -182,7 +183,7 @@ const Page = () => {
   
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(135deg,#eef2ff_0%,#f8fafc_44%,#eff6ff_100%)] text-slate-900">
+    <div className="relative min-h-100dvh overflow-hidden bg-[linear-gradient(135deg,#eef2ff_0%,#f8fafc_44%,#eff6ff_100%)] text-slate-900">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(129,140,248,0.22),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(56,189,248,0.14),_transparent_22%),radial-gradient(circle_at_bottom_left,_rgba(168,85,247,0.14),_transparent_28%)]" />
 
       <div className="relative flex min-h-screen items-stretch justify-center p-3 lg:p-6">
